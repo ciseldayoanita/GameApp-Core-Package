@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct CustomIcon: View {
-    var imageName: String
+public struct CustomIcon: View {
+    public var imageName: String
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Image(systemName: imageName)
                 .font(.title2)

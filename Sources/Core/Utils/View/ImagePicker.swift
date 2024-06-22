@@ -8,40 +8,40 @@
 import SwiftUI
 import UIKit
 
-struct ImagePicker: UIViewControllerRepresentable {
+public struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
     @Environment(\.presentationMode) var presentationMode
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    public var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        var parent: ImagePicker
+    public class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        public var parent: ImagePicker
         
-        init(parent: ImagePicker) {
+        public init(parent: ImagePicker) {
             self.parent = parent
         }
         
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let image = info[.originalImage] as? UIImage {
                 parent.selectedImage = image
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
         
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
     
-    func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
     
-    func makeUIViewController(context: Context) -> UIImagePickerController {
+    public func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
         picker.sourceType = sourceType
         return picker
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    public func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
 }

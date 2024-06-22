@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DateFormatter {
+public extension DateFormatter {
     static func format(
         from dateString: String,
         dateFormatFrom: String = "yyyy-MM-dd",
@@ -26,7 +26,7 @@ extension DateFormatter {
     }
 }
 
-extension DateFormatter {
+public extension DateFormatter {
     convenience init(dateFormat: String) {
         self.init()
         self.dateFormat = dateFormat

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct HtmlFormatter {
-    static func htmlToString(html: String) -> String {
+public struct HtmlFormatter {
+    public static func htmlToString(html: String) -> String {
         guard let data = html.data(using: .utf8) else { return "" }
         
         do {

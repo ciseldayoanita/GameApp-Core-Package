@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct TabItem: View {
-    var imageName: String
-    var title: String
+public struct TabItem: View {
+    public var imageName: String
+    public var title: String
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Image(systemName: imageName)
             Text(title)

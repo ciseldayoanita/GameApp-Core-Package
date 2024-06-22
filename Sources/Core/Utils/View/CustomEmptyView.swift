@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CustomEmptyView: View {
-    var image: String
-    var title: String
+public struct CustomEmptyView: View {
+    public var image: String
+    public var title: String
     
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .center) {
             Spacer()
             
