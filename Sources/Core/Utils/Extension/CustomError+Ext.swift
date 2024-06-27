@@ -14,22 +14,28 @@ public enum URLError: LocalizedError {
     
     public var errorDescription: String? {
         switch self {
-        case .invalidRequest: return "Request is null."
-        case .invalidResponse: return "The server returned an unexpected\nor malformed response."
-        case .addressUnreachable(let url): return "\(url.absoluteString) is unreachable."
+        case .invalidRequest: return "Request is null.".localized(identifier: Bundle(for: Identifier.self).bundleIdentifier ?? "")
+        case .invalidResponse: return "The server returned an unexpected\nor malformed response.".localized(identifier: Bundle(for: Identifier.self).bundleIdentifier ?? "")
+        case .addressUnreachable(let url):
+            let localizedFormat = "%@ is unreachable.".localized(identifier: Bundle(for: Identifier.self).bundleIdentifier ?? "")
+            return String(format: localizedFormat, url.absoluteString)
+                
         }
     }
 }
 
 public enum DatabaseError: LocalizedError {
-    
     case invalidInstance
     case requestFailed
     
     public var errorDescription: String? {
         switch self {
-        case .invalidInstance: return "Database can't instance."
-        case .requestFailed: return "Your request failed."
+        case .invalidInstance: return "Database can't instance.".localized(identifier: Bundle(for: Identifier.self).bundleIdentifier ?? "")
+        case .requestFailed: return "Your request failed.".localized(identifier: Bundle(for: Identifier.self).bundleIdentifier ?? "")
         }
     }
+}
+
+class Identifier {
+    
 }

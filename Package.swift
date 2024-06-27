@@ -5,11 +5,13 @@ import PackageDescription
 
 let package = Package(
     name: "Core",
+    defaultLocalization: "en",
     platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "Core",
+            type: .dynamic,
             targets: ["Core"]),
     ],
     dependencies: [
@@ -23,7 +25,9 @@ let package = Package(
             name: "Core",
             dependencies: [
                 .product(name: "RealmSwift", package: "realm-swift"),
-            ]),
+            ],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
             name: "CoreTests",
             dependencies: ["Core",
